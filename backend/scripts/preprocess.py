@@ -21,6 +21,8 @@ one_hot_df = pd.DataFrame(
 # 기존 데이터와 결합
 final_data = pd.concat([data, one_hot_df], axis = 1)
 
-# 결합된 데이터 확인
-print("\n최종 데이터:")
-print(final_data.head())
+# 전처리된 데이터를 저장
+processed_path = "/Users/lsm/Desktop/study/Lotto/backend/data/processed/"
+final_data.to_excel(processed_path + "Lotto_processed.xlsx", index=False)
+
+print("\n최종 데이터 저장 완료:", processed_path + "Lotto_processed.xlsx")
