@@ -56,6 +56,9 @@ print(data[["회차", "홀수", "짝수"]].head())
 # 연속된 숫자
 
 # 당첨숫자의 합계
+data["합계"] = data.iloc[:, 1:7].sum(axis = 1)
+print("당첨번호 합계 : ")
+print(data[["회차", "합계"]].head())
 
 # 드문 조합 랜덤
 
