@@ -32,15 +32,15 @@ num_range = set(range(1, 46))
 
 # 최근 5회 등장하지 않은 숫자
 absent_recent_5 = num_range - set(most_recent_5)
-print("최근 5회 등장하지 않은 숫자:", sorted(absent_recent_5))
+print("최근 5회 등장하지 않은 숫자 : ", sorted(absent_recent_5))
 
 # 최근 10회 등장하지 않은 숫자
 absent_recent_10 = num_range - set(most_recent_10)
-print("최근 10회 등장하지 않은 숫자:", sorted(absent_recent_10))
+print("최근 10회 등장하지 않은 숫자 : ", sorted(absent_recent_10))
 
 # 최근 15회 등장하지 않은 숫자
 absent_recent_15 = num_range - set(most_recent_15)
-print("최근 15회 등장하지 않은 숫자:", sorted(absent_recent_15))
+print("최근 15회 등장하지 않은 숫자 : ", sorted(absent_recent_15))
 
 # 당첨숫자의 간격
 data["평균간격"] = data.iloc[:, 1:7].apply(lambda row: np.mean(np.diff(sorted(row))), axis = 1)
@@ -48,6 +48,10 @@ print("숫자간 평균 간격 : ")
 print(data[["회차", "평균간격"]].head())
 
 # 홀/짝 비율
+data["홀수"] = data.iloc[:, 1:7].apply(lambda row: sum(num % 2 != 0 for num in row), axis = 1)
+data["짝수"] = 6 - data["홀수"]
+print("홀/짝 비율 : ")
+print(data[["회차", "홀수", "짝수"]].head())
 
 # 연속된 숫자
 
