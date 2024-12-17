@@ -53,16 +53,22 @@ data["짝수"] = 6 - data["홀수"]
 print("홀/짝 비율 : ")
 print(data[["회차", "홀수", "짝수"]].head())
 
-# 연속된 숫자
-
 # 당첨숫자의 합계
 data["합계"] = data.iloc[:, 1:7].sum(axis = 1)
 print("당첨번호 합계 : ")
 print(data[["회차", "합계"]].head())
 
-# 드문 조합 랜덤
-
-# 역사적 데이터 추세 분석
+# 연속된 숫자
+def count_consecutive_numbers(row):
+    sorted_row = sorted(row)
+    count = 0
+    for i in range(len(sorted_row) - 1):
+        if sorted_row[i + 1] - sorted_row[i] == 1:
+            count += 1
+    return count
+data["연속된숫자"] = data.iloc[:, 1:7].apply(count_consecutive_numbers, axis = 1)
+print("연속된 숫자 개수 : ")
+print(data[["회차", "연속된숫자"]].head())
 
 # 숫자간 상관관계 분석
 
