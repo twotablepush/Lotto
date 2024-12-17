@@ -45,18 +45,18 @@ print("최근 15회 등장하지 않은 숫자 : ", sorted(absent_recent_15))
 # 당첨숫자의 간격
 data["평균간격"] = data.iloc[:, 1:7].apply(lambda row: np.mean(np.diff(sorted(row))), axis = 1)
 print("숫자간 평균 간격 : ")
-print(data[["회차", "평균간격"]].head())
+print(data[["회차", "평균간격"]])
 
 # 홀/짝 비율
 data["홀수"] = data.iloc[:, 1:7].apply(lambda row: sum(num % 2 != 0 for num in row), axis = 1)
 data["짝수"] = 6 - data["홀수"]
 print("홀/짝 비율 : ")
-print(data[["회차", "홀수", "짝수"]].head())
+print(data[["회차", "홀수", "짝수"]])
 
 # 당첨숫자의 합계
 data["합계"] = data.iloc[:, 1:7].sum(axis = 1)
 print("당첨번호 합계 : ")
-print(data[["회차", "합계"]].head())
+print(data[["회차", "합계"]])
 
 # 연속된 숫자
 def count_consecutive_numbers(row):
@@ -68,8 +68,4 @@ def count_consecutive_numbers(row):
     return count
 data["연속된숫자"] = data.iloc[:, 1:7].apply(count_consecutive_numbers, axis = 1)
 print("연속된 숫자 개수 : ")
-print(data[["회차", "연속된숫자"]].head())
-
-# 숫자간 상관관계 분석
-
-# 가중치 기반 번호 선택
+print(data[["회차", "연속된숫자"]])
