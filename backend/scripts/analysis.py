@@ -41,3 +41,22 @@ print("최근 10회 등장하지 않은 숫자:", sorted(absent_recent_10))
 # 최근 15회 등장하지 않은 숫자
 absent_recent_15 = num_range - set(most_recent_15)
 print("최근 15회 등장하지 않은 숫자:", sorted(absent_recent_15))
+
+# 당첨숫자의 간격
+data["평균간격"] = data.iloc[:, 1:7].apply(lambda row: np.mean(np.diff(sorted(row))), axis = 1)
+print("숫자간 평균 간격 : ")
+print(data[["회차", "평균간격"]].head())
+
+# 홀/짝 비율
+
+# 연속된 숫자
+
+# 당첨숫자의 합계
+
+# 드문 조합 랜덤
+
+# 역사적 데이터 추세 분석
+
+# 숫자간 상관관계 분석
+
+# 가중치 기반 번호 선택
